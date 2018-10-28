@@ -3,7 +3,7 @@ require 'uuid_associations/active_record/relationship_definitions/has_many'
 
 module UuidAssociations
   module ActiveRecord
-    module MethodDefinitions
+    module AssociationMethodDefinitions
       def has_many(name, scope = nil, **options, &extension)
         original_payload = super(name, scope, options, &extension)
         RelationshipDefinitions::HasMany.define_accesors_for(self, original_payload, name)

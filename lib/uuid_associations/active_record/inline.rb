@@ -1,5 +1,5 @@
 require 'active_record'
 require 'active_record/associations'
-require 'uuid_associations/active_record/method_definitions'
+require 'uuid_associations/active_record/association_method_definitions'
 
-::ActiveRecord::Associations::ClassMethods.prepend UuidAssociations::ActiveRecord::MethodDefinitions
+::ActiveRecord::Base.extend(UuidAssociations::ActiveRecord::AssociationMethodDefinitions)
