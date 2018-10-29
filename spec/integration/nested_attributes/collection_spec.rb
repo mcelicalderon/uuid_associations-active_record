@@ -10,20 +10,19 @@ RSpec.describe 'nested attributes for collection' do
   end
 
   context 'when creating a new record' do
-    it 'creates nested resources when not existing UUID is passed' do
+    let(:uuid) { SecureRandom.uuid }
+
+    it 'raises an expception if no record is found with the specified UUID' do
       expect do
         Post.create!(
           uuid: SecureRandom.uuid,
           content: 'post',
           comments_attributes: [
             body: 'New comment',
-            uuid: SecureRandom.uuid
+            uuid: uuid
           ]
         )
-      end.to change(Post, :count).from(0).to(1)
-         .and change(Comment, :count).from(0).to(1)
-
-      expect(Post.first.comments.count).to eq(1)
+      end.to raise_error(ActiveRecord::RecordNotFound, "Couldn't find Comment with UUID=#{uuid}")
     end
 
     it 'creates nested resources when no UUID or ID is passed' do

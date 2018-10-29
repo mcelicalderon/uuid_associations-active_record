@@ -26,11 +26,13 @@ module UuidAssociations
 
             record = found_records.find { |found_record| found_record.uuid == uuid }
 
-            collection << if record.blank?
-              attributes
-            else
-              attributes.merge(id: record.id)
+            if record.blank?
+              raise ::ActiveRecord::RecordNotFound.new(
+                "Couldn't find #{association_klass.name} with UUID=#{uuid}", association_klass, :id, uuid
+              )
             end
+
+            collection << attributes.merge(id: record.id)
           end
 
           to_keep + replaced

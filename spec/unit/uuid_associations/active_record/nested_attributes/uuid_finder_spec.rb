@@ -17,7 +17,9 @@ RSpec.describe UuidAssociations::ActiveRecord::NestedAttributes::UuidFinder do
         context 'when record with specified UUID does not exist on the sytem' do
           let(:attribute_collection) { [{ uuid: SecureRandom.uuid, body: 'new comment :/' }] }
 
-          it { is_expected.to match_array(attribute_collection) }
+          it 'raises a not found error' do
+            expect { subject }.to raise_error(ActiveRecord::RecordNotFound)
+          end
         end
       end
 
@@ -47,7 +49,9 @@ RSpec.describe UuidAssociations::ActiveRecord::NestedAttributes::UuidFinder do
         context 'when record with specified UUID does not exist on the sytem' do
           let(:attribute_collection) { { first: { uuid: SecureRandom.uuid, body: 'new comment :/' } } }
 
-          it { is_expected.to match_array(attribute_collection.values) }
+          it 'raises a not found error' do
+            expect { subject }.to raise_error(ActiveRecord::RecordNotFound)
+          end
         end
       end
 
