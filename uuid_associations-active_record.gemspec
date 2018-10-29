@@ -12,6 +12,9 @@ Gem::Specification.new do |spec|
   spec.description   = 'Adds association_uuids= method on has_many and has_and_belongs_to_many associations'
   spec.homepage      = 'https://github.com/mcelicalderon/uuid_associations-active_record'
   spec.license       = 'MIT'
+  spec.metadata      = {
+    'source_code_uri' => 'https://github.com/mcelicalderon/uuid_associations-active_record'
+  }
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.test_files    = spec.files.grep(%r{^spec\/})
