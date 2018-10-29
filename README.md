@@ -42,12 +42,21 @@ you can always install the gem and require it manually (probably right after you
 specs if you want to use the gem with plain ActiveRecord as that is how they are setup.
 
 What this gem does is add some useful methods to your ActiveRecord models by calling the good old association methods like
-`has_many`, `belongs_to`, `has_and_belongs_to_many`.
+`has_many`, `belongs_to`, `has_and_belongs_to_many`. As you may already know, calling these methods creates multiple
+methods on the calling model for you. I'll explain the ones we are interested in in the next section.
 
-As you may already know, calling these methods creates multiple methods on the calling model for you. I'll explain the ones
-we are interested in in the next section.
+This gem also adds a helpful mechanism to handle nested attributes. This will also be explained in the next section.
 
-### Example
+That's it! That is what the gem does. This will allow you to pass UUIDs to your update or create operations instead
+of the actual IDs. Be aware that this will of course require an additional (but simple) DB query. That is the cost of
+hiding the actual IDs (I'd say it's not too costly).
+
+Also be aware that the initial version of this gem is not very configurable,
+so the only thing it checks before creating the methods is that the right side association
+on the caller model has a column named `uuid`, doesn't take the column type into account.
+I have tested with string columns in SQlite3 and UUID columns in Postgres.
+
+### Association Methods
 
 Lets explore the next example:
 
@@ -167,20 +176,54 @@ class Comment < ActiveRecord::Base
 end
 ```
 
-And that's it! That is what the gem does. This will allow you to pass UUIDs to your update or create operations instead
-of the actual IDs. Be aware that this will of course require an additional (but simple) DB query. That is the cost of
-hiding the actual IDs (I'd say it's not too costly).
+### Nested Attributes
 
-Also be aware that the initial version of this gem is not very configurable,
-so the only thing it checks before creating the methods is that the right side association
-on the caller model has a column named `uuid`, doesn't take the column type into account.
-I have tested with string columns in SQlite3 and UUID columns in Postgres.
+Nested attributes don't generate additional methods, this gem just modifies one so you can update nested record using
+the record's UUID instead of the actual ID. Let's explore the next example:
+
+```ruby
+class Post < ActiveRecord::Base
+  has_many :comments
+
+  accepts_nested_attributes_for :comments, allow_destroy: true
+  # generates
+  #
+  # def comments_attributes=(attributes)
+  #   # allows to create or update comments using this method on Post
+  # end
+end
+```
+
+ActiveRecord allows for `attributes` to be an array of hashes or a hash of hashes. Here are some examples of the payload
+you can pass to `comments_attributes` by using this gem:
+
+```ruby
+# This is supported without this gem
+[
+  { id: 1, comment_body: 'updating comment with ID 1' },
+  { id: 2, _destroy: true },
+  { comment_body: 'this will create a new comment' }
+]
+
+# With the gem, you can use UUIDs instead
+[
+  { uuid: 'some-uuid', comment_body: 'updating comment with UUID: some-uuid' }.
+  { uuid: 'other-uuid', _destroy: true },
+  { comment_body: 'this will create a new comment' }
+]
+```
+
+Here are some things to take into account:
+
+1. If the nested model (Comment in the example) does not have a column named `uuid`, the gem will take no action, will
+just preserve the original behavior.
+1. If the hash has both the `:id` and `:uuid` keys, the record will be fetched by `id`, and `uuid` will be passed as an attribute.
+1. When the hash has a `:uuid` key and no record is found for that key, a new record will be created using that UUID
+(this will change to raise a not found error instead).
 
 ## Future Work
 
 1. Not commonly used by me, but testing and adding these methods to a `has_one` relationship.
-1. Find IDs for nested attributes in an update operation. This will require to update the hash received in the request
-(I have already tested a simple implementation outside of this gem).
 1. Raise not found error if the array of UUIDs is bigger that the array
 of IDs fetched with the `where` statement (ActiveRecord's behavior).
 
