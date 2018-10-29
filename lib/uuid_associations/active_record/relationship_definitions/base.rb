@@ -34,6 +34,8 @@ module UuidAssociations
         end
 
         def uuid_column?(association_class_name)
+          return false unless ::ActiveRecord::Base.connected?
+
           table_name = table_name_from_class_name(association_class_name)
           return false unless ::ActiveRecord::Base.connection.tables.include?(table_name)
 
