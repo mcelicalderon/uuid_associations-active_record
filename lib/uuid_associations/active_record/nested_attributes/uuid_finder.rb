@@ -27,9 +27,7 @@ module UuidAssociations
             record = found_records.find { |found_record| found_record.uuid == uuid }
 
             if record.blank?
-              raise ::ActiveRecord::RecordNotFound.new(
-                "Couldn't find #{association_klass.name} with UUID=#{uuid}", association_klass, :id, uuid
-              )
+              raise_not_found_error(uuid)
             end
 
             collection << attributes.merge(id: record.id)
@@ -42,6 +40,16 @@ module UuidAssociations
 
         def attribute_collection
           @attribute_collection.instance_of?(Hash) ? @attribute_collection.values : @attribute_collection
+        end
+
+        def raise_not_found_error(uuid)
+          if ::ActiveRecord.version < Gem::Version.new('5.0')
+            raise ::ActiveRecord::RecordNotFound, "Couldn't find #{association_klass.name} with UUID=#{uuid}"
+          else
+            raise ::ActiveRecord::RecordNotFound.new(
+              "Couldn't find #{association_klass.name} with UUID=#{uuid}", association_klass, :id, uuid
+            )
+          end
         end
 
         attr_reader :association_klass
