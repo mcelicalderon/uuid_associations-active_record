@@ -10,7 +10,7 @@ ActiveRecord::Schema.define version: 0 do
     t.timestamps
   end
 
-  create_table :teams_users, foreign_key: false do |t|
+  create_table :teams_users, id: false do |t|
     t.integer :user_id, null: false
     t.integer :team_id, null: false
   end
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define version: 0 do
     t.timestamps
   end
 
-  create_table :pets_users, foreign_key: false do |t|
+  create_table :pets_users, id: false do |t|
     t.integer :user_id, null: false
     t.integer :pet_id, null: false
   end
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define version: 0 do
   create_table :pets do |t|
     t.string :name
     t.string :uuid
+
+    t.timestamps
+  end
+
+  create_table :toys do |t|
+    t.string :name, null: false
+    t.belongs_to :pet, foreign_key: { on_delete: :cascade }
 
     t.timestamps
   end

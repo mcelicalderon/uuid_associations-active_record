@@ -6,6 +6,8 @@ require 'support/models/team'
 require 'support/models/user'
 require 'support/models/post'
 require 'support/models/comment'
+require 'support/models/pet'
+require 'support/models/toy'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
