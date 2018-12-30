@@ -8,20 +8,19 @@ rvm:
   - 2.3.8
   - 2.4.5
   - 2.5.3
+  - 2.6.0
 
 gemfile:
   - gemfiles/active_record_4.2.gemfile
   - gemfiles/active_record_5.0.gemfile
   - gemfiles/active_record_5.1.gemfile
   - gemfiles/active_record_5.2.gemfile
-  - gemfiles/active_record_edge.gemfile
 
 matrix:
   include:
     - gemfile: gemfiles/active_record_4.2.gemfile
       rvm: 2.1.10
-  exclude:
     - gemfile: gemfiles/active_record_edge.gemfile
-      rvm: 2.2.10
+      rvm: 2.5.3
     - gemfile: gemfiles/active_record_edge.gemfile
-      rvm: 2.3.8
+      rvm: 2.6.0
