@@ -3,9 +3,6 @@ language: ruby
 sudo: false
 cache: bundler
 
-before_install:
-  - type bundle >/dev/null 2>&1 || gem install bundler -v '< 2'
-
 rvm:
   - 2.2.10
   - 2.3.8
