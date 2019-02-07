@@ -1,10 +1,10 @@
 appraise 'active_record_4.2' do
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3.6'
   gem 'activerecord', github: 'rails/rails', branch: '4-2-stable'
 end
 
 appraise 'active_record_5.0' do
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3.6'
   gem 'activerecord', github: 'rails/rails', branch: '5-0-stable'
 end
 
