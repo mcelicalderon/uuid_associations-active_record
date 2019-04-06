@@ -7,6 +7,8 @@ module UuidAssociations
       def has_many(name, scope = nil, **options, &extension)
         original_payload = super(name, scope, options, &extension)
         RelationshipDefinitions::HasMany.define_accesors_for(self, original_payload, name)
+
+        original_payload
       end
 
       def belongs_to(name, scope = nil, **options)
@@ -14,6 +16,8 @@ module UuidAssociations
         return original_payload if original_payload.key?('left_side')
 
         RelationshipDefinitions::BelongsTo.define_accesors_for(self, original_payload, name)
+
+        original_payload
       end
     end
   end

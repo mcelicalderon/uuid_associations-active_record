@@ -14,7 +14,9 @@ module UuidAssociations
 
         def call
           reflection = find_reflection(payload)
-          association_class_name = reflection.class_name
+
+          association_class_name = class_name_from_reflection(reflection)
+          return payload if association_class_name.nil?
 
           define_accesors(klass, association_class_name) if uuid_column?(association_class_name)
 
@@ -24,6 +26,11 @@ module UuidAssociations
         private
 
         attr_reader :payload, :klass, :name
+
+        def class_name_from_reflection(reflection)
+          reflection.class_name
+        rescue NoMethodError
+        end
 
         def find_reflection(payload)
           payload[name]
