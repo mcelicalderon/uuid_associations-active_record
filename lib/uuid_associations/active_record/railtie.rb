@@ -10,6 +10,7 @@ module UuidAssociations
 
           extend(UuidAssociations::ActiveRecord::AssociationMethodDefinitions)
           prepend(UuidAssociations::ActiveRecord::NestedAttributesMethodDefinitions)
+          extend(UuidAssociations::ActiveRecord::NestedAttributesMethodDefinitions::ClassMethods)
         end
       end
     end
