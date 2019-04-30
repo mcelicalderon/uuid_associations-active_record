@@ -56,4 +56,12 @@ ActiveRecord::Schema.define version: 0 do
 
     t.timestamps
   end
+
+  create_table :attachments do |t|
+    t.belongs_to :post, foreign_key: { on_delete: :cascade }
+    t.string     :uuid
+    t.string     :body
+
+    t.timestamps
+  end
 end

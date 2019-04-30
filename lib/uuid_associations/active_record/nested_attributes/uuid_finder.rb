@@ -2,13 +2,14 @@ module UuidAssociations
   module ActiveRecord
     module NestedAttributes
       class UuidFinder
-        def self.replaced_uuids_with_ids(association_klass, attribute_collection)
-          new(association_klass, attribute_collection).call
+        def self.replaced_uuids_with_ids(association_klass, attribute_collection, options)
+          new(association_klass, attribute_collection, options).call
         end
 
-        def initialize(association_klass, attribute_collection)
+        def initialize(association_klass, attribute_collection, options)
           @association_klass    = association_klass
           @attribute_collection = attribute_collection
+          @options              = options
         end
 
         def call
@@ -26,11 +27,17 @@ module UuidAssociations
 
             record = found_records.find { |found_record| found_record.uuid == uuid }
 
-            if record.blank?
-              raise_not_found_error(uuid)
-            end
+            if @options[:create_missing_uuids]
+              collection << if record.blank?
+                attributes.merge(uuid: uuid)
+              else
+                attributes.merge(id: record.id)
+              end
+            else
+              raise_not_found_error(uuid) if record.blank?
 
-            collection << attributes.merge(id: record.id)
+              collection << attributes.merge(id: record.id)
+            end
           end
 
           to_keep + replaced

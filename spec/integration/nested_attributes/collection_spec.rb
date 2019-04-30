@@ -39,6 +39,25 @@ RSpec.describe 'nested attributes for collection' do
 
       expect(Post.first.comments.count).to eq(1)
     end
+
+    context 'when create_missing_uuids is set to true' do
+      let(:provided_uuid) { SecureRandom.uuid }
+
+      it 'creates a resource even if a uuid is provided' do
+        expect do
+          Post.create!(
+            uuid: SecureRandom.uuid,
+            content: 'post',
+            attachments_attributes: [
+              body: 'New comment', uuid: provided_uuid
+            ]
+          )
+        end.to change(Post, :count).from(0).to(1)
+           .and change(Attachment, :count).from(0).to(1)
+
+        expect(Post.first.attachments.first.uuid).to eq(provided_uuid)
+      end
+    end
   end
 
   context 'when updating existing records' do

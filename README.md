@@ -219,12 +219,13 @@ Here are some things to take into account:
 just preserve the original behavior.
 1. If the hash has both the `:id` and `:uuid` keys, the record will be fetched by `id`, and `uuid` will be passed as an attribute.
 1. When the hash has a `:uuid` key and no record is found for that key, an `ActiveRecord::RecordNotFound` error will be raised.
+   If you want the behavior to be that a new record is created when not found by UUID, you can set the option `create_missing_uuids: true`
+   on the `accepts_nested_attributes_for` call.
 
 ## Future Work
 
 1. Not commonly used by me, but testing and adding these methods to a `has_one` relationship.
 1. Raise not found error if the array of UUIDs is bigger that the array of IDs fetched with the `where` statement (ActiveRecord's behavior).
-1. Allow `accepts_nested_attributes_for` to take a configuration to allow the creation of new records if not found by UUID.
 
 ## Development
 
