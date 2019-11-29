@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'activerecord', '>= 4.2', '< 7.0'
 
   spec.add_development_dependency 'appraisal', '~> 2.0'
+  spec.add_development_dependency 'github_changelog_generator'
   spec.add_development_dependency 'pry', '~> 0.11.3'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
