@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'has_and_belongs_to_many associations' do
   let(:user)  { User.create!(name: 'Alice', uuid: SecureRandom.uuid) }
   let(:team)  { Team.create!(name: 'My Team', uuid: SecureRandom.uuid) }

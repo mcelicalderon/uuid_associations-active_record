@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'nested attributes for collection' do
   context 'when nested association has no UUID column' do
     let(:pet) { Pet.create!(name: 'Simba') }

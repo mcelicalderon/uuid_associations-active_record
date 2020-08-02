@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'uuid_associations/active_record/association_method_definitions'
 require 'uuid_associations/active_record/nested_attributes_method_definitions'
 
