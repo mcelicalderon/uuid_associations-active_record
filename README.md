@@ -2,6 +2,26 @@
 [![Build Status](https://travis-ci.org/mcelicalderon/uuid_associations-active_record.svg?branch=master)](https://travis-ci.org/mcelicalderon/uuid_associations-active_record)
 [![Gem Version](https://badge.fury.io/rb/uuid_associations-active_record.svg)](https://badge.fury.io/rb/uuid_associations-active_record)
 
+## Table of Contents
+
+<!--ts-->
+   * [UUID Associations ActiveRecord](#uuid-associations-activerecord)
+      * [Table of Contents](#table-of-contents)
+      * [Installation](#installation)
+      * [Rationale](#rationale)
+      * [Usage](#usage)
+         * [Association Methods](#association-methods)
+            * [Generated Methods](#generated-methods)
+         * [Nested Attributes](#nested-attributes)
+      * [Future Work](#future-work)
+      * [Development](#development)
+      * [Contributing](#contributing)
+      * [License](#license)
+
+<!-- Added by: mcelicalderon, at: Sun Aug  2 12:17:14 -05 2020 -->
+
+<!--te-->
+
 ## Installation
 
 Add this line to your application's Gemfile:

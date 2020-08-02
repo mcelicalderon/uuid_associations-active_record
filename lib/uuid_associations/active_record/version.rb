@@ -2,6 +2,6 @@
 
 module UuidAssociations
   module ActiveRecord
-    VERSION = '0.4.2'.freeze
+    VERSION = '0.4.3'
   end
 end

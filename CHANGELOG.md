@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.4.3](https://github.com/mcelicalderon/uuid_associations-active_record/tree/v0.4.3) (2020-08-02)
+
+[Full Changelog](https://github.com/mcelicalderon/uuid_associations-active_record/compare/v0.4.2...v0.4.3)
+
+**Implemented enhancements:**
+
+- Add frozen string literal to ruby files [\#6](https://github.com/mcelicalderon/uuid_associations-active_record/pull/6) ([mcelicalderon](https://github.com/mcelicalderon))
+
 ## [v0.4.2](https://github.com/mcelicalderon/uuid_associations-active_record/tree/v0.4.2) (2019-04-30)
 
 [Full Changelog](https://github.com/mcelicalderon/uuid_associations-active_record/compare/v0.4.1...v0.4.2)
@@ -20,6 +28,10 @@
 
 [Full Changelog](https://github.com/mcelicalderon/uuid_associations-active_record/compare/v0.3.2...v0.3.3)
 
+**Fixed bugs:**
+
+- Try to establish DB connection to check for UUID column [\#3](https://github.com/mcelicalderon/uuid_associations-active_record/pull/3) ([mcelicalderon](https://github.com/mcelicalderon))
+
 ## [v0.3.2](https://github.com/mcelicalderon/uuid_associations-active_record/tree/v0.3.2) (2018-10-29)
 
 [Full Changelog](https://github.com/mcelicalderon/uuid_associations-active_record/compare/v0.3.1...v0.3.2)
@@ -35,6 +47,10 @@
 ## [v0.2.0](https://github.com/mcelicalderon/uuid_associations-active_record/tree/v0.2.0) (2018-10-29)
 
 [Full Changelog](https://github.com/mcelicalderon/uuid_associations-active_record/compare/v0.1.0...v0.2.0)
+
+**Implemented enhancements:**
+
+- Allow nested attributes to update records using UUID [\#1](https://github.com/mcelicalderon/uuid_associations-active_record/pull/1) ([mcelicalderon](https://github.com/mcelicalderon))
 
 ## [v0.1.0](https://github.com/mcelicalderon/uuid_associations-active_record/tree/v0.1.0) (2018-10-16)
 

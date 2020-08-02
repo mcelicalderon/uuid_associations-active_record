@@ -9,5 +9,7 @@
 *.lock
 *.gem
 
+README.md.*
+
 # rspec failure tracking
 .rspec_status
