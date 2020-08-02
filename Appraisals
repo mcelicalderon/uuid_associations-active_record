@@ -18,6 +18,11 @@ appraise 'active_record_5.2' do
   gem 'activerecord', github: 'rails/rails', branch: '5-2-stable'
 end
 
+appraise 'active_record_6.0' do
+  gem 'sqlite3'
+  gem 'activerecord', github: 'rails/rails', branch: '6-0-stable'
+end
+
 appraise 'active_record_edge' do
   gem 'sqlite3'
   gem 'activerecord', github: 'rails/rails', branch: 'master'

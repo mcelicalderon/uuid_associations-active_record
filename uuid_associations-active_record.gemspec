@@ -16,8 +16,12 @@ Gem::Specification.new do |spec|
     'source_code_uri' => 'https://github.com/mcelicalderon/uuid_associations-active_record'
   }
 
-  spec.files         = `git ls-files -z`.split("\x0")
-  spec.test_files    = spec.files.grep(%r{^spec\/})
+  spec.files = Dir.chdir(File.expand_path(__dir__)) do
+    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|gemfiles)/}) }
+  end
+  spec.test_files    = Dir.chdir(File.expand_path(__dir__)) do
+    `git ls-files -z`.split("\x0").select { |f| f.match(%r{^spec/}) }
+  end
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
@@ -29,7 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'appraisal', '~> 2.0'
   spec.add_development_dependency 'github_changelog_generator'
   spec.add_development_dependency 'pry', '~> 0.11.3'
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rake', '>= 12.3.3'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'sqlite3', '~> 1.3'
 end
