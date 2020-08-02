@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'uuid_associations/active_record/relationship_definitions/base'
 
 module UuidAssociations

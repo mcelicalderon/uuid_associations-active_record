@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UuidAssociations
   module ActiveRecord
     module RelationshipDefinitions

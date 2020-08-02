@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'has_many associations' do
   let(:post)    { Post.create!(content: 'test', uuid: SecureRandom.uuid) }
   let(:user)    { User.create!(name: 'Alice', uuid: SecureRandom.uuid) }
