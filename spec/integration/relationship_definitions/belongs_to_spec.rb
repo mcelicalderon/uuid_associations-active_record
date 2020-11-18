@@ -9,6 +9,14 @@ RSpec.describe 'belongs_to associations' do
 
       expect(post.user_id).to eq(user.id)
     end
+
+    context 'when provided a nil value' do
+      it 'sets a nil value' do
+        post = Post.create!(user_uuid: nil, content: 'my first comment')
+
+        expect(post.user_id).to be_nil
+      end
+    end
   end
 
   describe 'readers' do
