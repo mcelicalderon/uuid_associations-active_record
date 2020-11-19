@@ -1,5 +1,5 @@
 # UUID Associations ActiveRecord
-[![Build Status](https://travis-ci.org/mcelicalderon/uuid_associations-active_record.svg?branch=master)](https://travis-ci.org/mcelicalderon/uuid_associations-active_record)
+[![Build Status](https://travis-ci.com/mcelicalderon/uuid_associations-active_record.svg?branch=master)](https://travis-ci.com/mcelicalderon/uuid_associations-active_record)
 [![Gem Version](https://badge.fury.io/rb/uuid_associations-active_record.svg)](https://badge.fury.io/rb/uuid_associations-active_record)
 
 ## Table of Contents
