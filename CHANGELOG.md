@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.4.4](https://github.com/mcelicalderon/uuid_associations-active_record/tree/v0.4.4) (2020-11-19)
+
+[Full Changelog](https://github.com/mcelicalderon/uuid_associations-active_record/compare/v0.4.3...v0.4.4)
+
+**Fixed bugs:**
+
+- Allow belongs\_to association to set nil values [\#7](https://github.com/mcelicalderon/uuid_associations-active_record/pull/7) ([mcelicalderon](https://github.com/mcelicalderon))
+
 ## [v0.4.3](https://github.com/mcelicalderon/uuid_associations-active_record/tree/v0.4.3) (2020-08-02)
 
 [Full Changelog](https://github.com/mcelicalderon/uuid_associations-active_record/compare/v0.4.2...v0.4.3)
