@@ -11,7 +11,11 @@ module UuidAssociations
         def define_accesors(klass, association_class_name)
           klass.class_eval <<-CODE, __FILE__, __LINE__ + 1
             def #{name}_uuid=(uuid)
-              self.#{name}_id = #{association_class_name}.find_by!(uuid: uuid).id
+              if uuid.nil?
+                self.#{name}_id = nil
+              else
+                self.#{name}_id = #{association_class_name}.find_by!(uuid: uuid).id
+              end
             end
           CODE
 
