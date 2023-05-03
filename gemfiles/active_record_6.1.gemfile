@@ -3,6 +3,6 @@
 source "https://rubygems.org"
 
 gem "sqlite3", "< 1.5"
-gem "activerecord", git: "https://github.com/rails/rails", branch: "6-0-stable"
+gem "activerecord", git: "https://github.com/rails/rails", branch: "6-1-stable"
 
 gemspec path: "../"
