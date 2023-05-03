@@ -8,6 +8,7 @@
 /tmp/
 *.lock
 *.gem
+.editorconfig
 
 README.md.*
 
