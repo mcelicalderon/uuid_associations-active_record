@@ -1,5 +1,21 @@
 # Changelog
 
+## [v0.6.0](https://github.com/mcelicalderon/uuid_associations-active_record/tree/v0.6.0) (2023-05-03)
+
+[Full Changelog](https://github.com/mcelicalderon/uuid_associations-active_record/compare/v0.5.0...v0.6.0)
+
+**Implemented enhancements:**
+
+- Support Rails 3 [\#9](https://github.com/mcelicalderon/uuid_associations-active_record/pull/9) ([mcelicalderon](https://github.com/mcelicalderon))
+
+## [v0.5.0](https://github.com/mcelicalderon/uuid_associations-active_record/tree/v0.5.0) (2023-05-03)
+
+[Full Changelog](https://github.com/mcelicalderon/uuid_associations-active_record/compare/v0.4.4...v0.5.0)
+
+**Implemented enhancements:**
+
+- Support ActiveRecord 7.x [\#8](https://github.com/mcelicalderon/uuid_associations-active_record/pull/8) ([mfitzhenry](https://github.com/mfitzhenry))
+
 ## [v0.4.4](https://github.com/mcelicalderon/uuid_associations-active_record/tree/v0.4.4) (2020-11-19)
 
 [Full Changelog](https://github.com/mcelicalderon/uuid_associations-active_record/compare/v0.4.3...v0.4.4)
@@ -32,6 +48,10 @@
 
 [Full Changelog](https://github.com/mcelicalderon/uuid_associations-active_record/compare/v0.3.3...v0.3.4)
 
+**Merged pull requests:**
+
+- Remove custom script to install bundler \< 2.0 [\#4](https://github.com/mcelicalderon/uuid_associations-active_record/pull/4) ([mcelicalderon](https://github.com/mcelicalderon))
+
 ## [v0.3.3](https://github.com/mcelicalderon/uuid_associations-active_record/tree/v0.3.3) (2019-01-08)
 
 [Full Changelog](https://github.com/mcelicalderon/uuid_associations-active_record/compare/v0.3.2...v0.3.3)
@@ -39,6 +59,10 @@
 **Fixed bugs:**
 
 - Try to establish DB connection to check for UUID column [\#3](https://github.com/mcelicalderon/uuid_associations-active_record/pull/3) ([mcelicalderon](https://github.com/mcelicalderon))
+
+**Merged pull requests:**
+
+- Update Travis test versions [\#2](https://github.com/mcelicalderon/uuid_associations-active_record/pull/2) ([mcelicalderon](https://github.com/mcelicalderon))
 
 ## [v0.3.2](https://github.com/mcelicalderon/uuid_associations-active_record/tree/v0.3.2) (2018-10-29)
 
